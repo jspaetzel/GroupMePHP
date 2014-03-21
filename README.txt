@@ -10,5 +10,5 @@ require('GroupMe.php');
 
 $gm = new GroupMe('APIKEY');
 
-$gm->groups->index(array();); 
+$gm->groups->index(array()); 
 ?>
