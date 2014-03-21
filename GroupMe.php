@@ -1,21 +1,35 @@
 <?php
 
-require("GroupMe/groups.php");
 require("GroupMe/directmessages.php");
-
+require("GroupMe/groups.php");
+require("GroupMe/likes.php");
+require("GroupMe/members.php");
+require("GroupMe/messages.php");
+require("GroupMe/users.php");
 
 class GroupMe {
-    public $groups;
     public $directmessages;
+    public $groups;
+    public $likes;
+    public $members;
+    public $messages;
+    public $users;
     
-    public function __construct($token){
-        $this->groups = new groups($token);
-        $this->directmessages = new directmessages($token);
+    public function __construct($token) {
+        if(isset($token)) {
+            $this->directmessages = new directmessages($token);
+            $this->groups = new groups($token);
+            $this->likes = new likes($token);
+            $this->members = new members($token);
+            $this->messages = new messages($token);
+            $this->users = new users($token);
+        } else {
+			die('You must include a user or application token');
+		}
 	}
 }
 
 class client {
-	
 	private $token = '';
 	private $url = 'https://api.groupme.com/v3';
 
@@ -25,20 +39,14 @@ class client {
  * send array with 'access_token'
  * 
  */
-	public function __construct($token){
-		if(isset($token)){
-			$this->token = $token;			
-		}
-		else{
-			die('You must include a token');
-		}
+	public function __construct($token) {
+        $this->token = $token;
 	}
 
 /*
  * Build query string from $args
  */
-    private function buildQueryString($args){
-        // append key
+    private function buildQueryString($args) {
         $args = $args + array("token" => $this->token);
         
         $query = "";
@@ -58,7 +66,7 @@ class client {
 /*
  * Overhead function that all requests utilize
  */	
-	public function request($args){
+	public function request($args) {
 		$c = curl_init();
 		
         curl_setopt($c, CURLOPT_TIMEOUT, 4);
@@ -78,9 +86,7 @@ class client {
 			
             curl_setopt($ch, CURLOPT_HTTPHEADER,array('Content-Type: application/json'));
         }
-
 		$response = curl_exec($c);
-		
 		return $response;
 	}
 

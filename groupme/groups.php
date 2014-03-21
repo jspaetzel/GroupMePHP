@@ -115,7 +115,7 @@ class groups extends client {
  * @return string $return
  * 
  */
-	public function update($id, $args){
+	public function destroy($id, $args){
 		$params = array(
 			'url' => '/groups/' . $id . '/destroy',
 			'method' => 'POST',

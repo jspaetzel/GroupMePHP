@@ -39,7 +39,7 @@ class members extends client {
  * @return string $return
  * 
  */
-	public function add($group_id, $user_id){
+	public function remove($group_id, $user_id){
 		$params = array(
 			'url' => '/groups/' . $group_id . '/members/' . $user_id . '/remove',
 			'method' => 'POST',
