@@ -23,9 +23,26 @@ class members extends client {
 		$params = array(
 			'url' => '/groups/' . $id . '/members/add',
 			'method' => 'POST',
-            'query' => array(),
-            'payload' => $args
+            		'query' => array(),
+            		'payload' => $args
 		);
+		
+		return $this->request($params);
+	}
+/*
+ * results: Add members to a group
+ * 
+ * @param string required $group_id
+ * @param string required $results_id, This is the guid that's returned from an add request. 
+ * 
+ * Expects 503 or 404 or 200 response
+ */
+	public function results($group_id, $results_id) {
+		$params = array (
+			'url' => '/groups/' . $group_id . '/members/results/' . $results_id,
+			'method' => 'GET',
+			'query' = array()
+			);
 		
 		return $this->request($params);
 	}
@@ -43,7 +60,7 @@ class members extends client {
 		$params = array(
 			'url' => '/groups/' . $group_id . '/members/' . $user_id . '/remove',
 			'method' => 'POST',
-            'query' => array(),
+            		'query' => array(),
 		);
 		
 		return $this->request($params);
