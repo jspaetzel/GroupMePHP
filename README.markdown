@@ -12,3 +12,12 @@ $gm = new GroupMe('APIKEY');
 $gm->groups->index(array()); 
 ?>
 ~~~~~
+
+Todo:
+- Image service uploads
+- Image attachment
+- Location Attachment
+- Emoji Attachment
+- Tests
+- sms-mode
+- decide how to format parameters to be more usable
