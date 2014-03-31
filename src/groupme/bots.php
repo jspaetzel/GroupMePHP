@@ -14,7 +14,7 @@ class bots extends client {
 	 * @return string $return
 	 * 
 	 */
-	public function add($args){
+	public function create($args){
 		$params = array(
 			'url' => '/bots',
 			'method' => 'POST',
@@ -28,9 +28,10 @@ class bots extends client {
 	/**
 	 * post: Post a message from a bot
 	 * 
-	 * bot_id required string 
-	 * text required string
-	 * picture_url string — Image must be processed through image service.
+	 * @param array $args
+	 * 		bot_id required string 
+	 * 		text required string
+	 * 		picture_url string — Image must be processed through image service.
 	 * 
 	 * @return string $return
 	 * 
@@ -52,7 +53,7 @@ class bots extends client {
 	 * @param takes no parameters
 	 * 
 	 */
-	public function results($args) {
+	public function index($args) {
 		$params = array (
 			'url' => '/bots',
 			'method' => 'GET',
@@ -65,12 +66,12 @@ class bots extends client {
 	/**
 	 * destroy: Remove a bot that you have created
 	 * 
-	 * bot_id required string 
+	 * @param bot_id required string 
 	 * 
 	 * @return string $return
 	 * 
 	 */
-	public function post($bot_id, $args){
+	public function destroy($bot_id, $args){
 		$params = array(
 			'url' => '/bots/destroy',
 			'method' => 'POST',
