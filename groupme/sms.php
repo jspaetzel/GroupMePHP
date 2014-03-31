@@ -14,11 +14,11 @@ class sms extends client {
 		$params = array(
 			'url' => '/users/sms_mode',
 			'method' => 'POST',
-            'query' => array(),
-            'payload' => array(
-            	'duration' => $duration,
-            	'registration_id' => $registration_id
-            	)
+			'query' => array(),
+			'payload' => array(
+				'duration' => $duration,
+				'registration_id' => $registration_id
+				)
 		);
 		
 		return $this->request($params);
@@ -33,8 +33,8 @@ class sms extends client {
 		$params = array(
 			'url' => '/users/sms_mode/delete',
 			'method' => 'POST',
-            'query' => array(),
-            'payload' => array()
+			'query' => array(),
+			'payload' => array()
 		);
 		
 		return $this->request($params);
