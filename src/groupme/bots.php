@@ -14,7 +14,7 @@ class bots extends client {
 	 * @return string $return
 	 * 
 	 */
-	public function add($args){
+	public function create($args){
 		$params = array(
 			'url' => '/bots',
 			'method' => 'POST',
@@ -53,7 +53,7 @@ class bots extends client {
 	 * @param takes no parameters
 	 * 
 	 */
-	public function results($args) {
+	public function index($args) {
 		$params = array (
 			'url' => '/bots',
 			'method' => 'GET',
@@ -71,7 +71,7 @@ class bots extends client {
 	 * @return string $return
 	 * 
 	 */
-	public function post($bot_id, $args){
+	public function destroy($bot_id, $args){
 		$params = array(
 			'url' => '/bots/destroy',
 			'method' => 'POST',
