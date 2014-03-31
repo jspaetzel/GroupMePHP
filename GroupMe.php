@@ -1,11 +1,13 @@
 <?php
 
-require("GroupMe/directmessages.php");
-require("GroupMe/groups.php");
-require("GroupMe/likes.php");
-require("GroupMe/members.php");
-require("GroupMe/messages.php");
-require("GroupMe/users.php");
+require("groupme/directmessages.php");
+require("groupme/groups.php");
+require("groupme/likes.php");
+require("groupme/members.php");
+require("groupme/messages.php");
+require("groupme/users.php");
+require("groupme/bots.php")
+require("groupme/sms.php")
 
 class GroupMe {
     public $directmessages;
@@ -14,6 +16,8 @@ class GroupMe {
     public $members;
     public $messages;
     public $users;
+    public $bots;
+    public $sms;
     
     public function __construct($token) {
         if(isset($token)) {
@@ -23,6 +27,8 @@ class GroupMe {
             $this->members = new members($token);
             $this->messages = new messages($token);
             $this->users = new users($token);
+            $this->bots = new bots($token);
+            $this->sms = new sms($token);
         } else {
 			die('You must include a user or application token');
 		}
