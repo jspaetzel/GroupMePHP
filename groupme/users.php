@@ -2,7 +2,7 @@
 
 class users extends client {
 	
-	/*
+	/**
 	 * me: Get details about the authenticated user.
 	 * 
 	 * @return string $return

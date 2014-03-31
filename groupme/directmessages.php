@@ -2,7 +2,7 @@
 
 class directmessages extends client {
 	
-	/*
+	/**
 	 * index: Fetch direct messages between two users.
 	 * 
 	 * @param array $args
@@ -24,7 +24,7 @@ class directmessages extends client {
 		return $this->request($params);
 	}
 
-	/*
+	/**
 	 * create: Create direct messages between two users.
 	 * 
 	 * @param array $args

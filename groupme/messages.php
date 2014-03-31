@@ -2,7 +2,7 @@
 
 class messages extends client {
 	
-	/*
+	/**
 	 * index: Retrieve messages for a group.
 	 * 
 	 * @param string required $id
@@ -24,7 +24,7 @@ class messages extends client {
 		return $this->request($params);
 	}
 
-	/*
+	/**
 	 * create: Create messages in a group.
 	 * 
 	 * @param string required $id

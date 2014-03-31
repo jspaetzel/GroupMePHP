@@ -5,9 +5,9 @@ Warning: This code is untested, under development, and very liable to be modifie
 Example, list index of groups for authenticated user: 
 ~~~~~ php
 <?php
-require('GroupMe.php');
+require('groupme.php');
 
-$gm = new GroupMe('APIKEY');
+$gm = new groupme('APIKEY');
 
 $gm->groups->index(array()); 
 ?>
@@ -19,5 +19,4 @@ Todo:
 - Location Attachment
 - Emoji Attachment
 - Tests
-- sms-mode
 - decide how to format parameters to be more usable

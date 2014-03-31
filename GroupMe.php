@@ -9,7 +9,7 @@ require("groupme/users.php");
 require("groupme/bots.php")
 require("groupme/sms.php")
 
-class GroupMe {
+class groupme {
 	public $directmessages;
 	public $groups;
 	public $likes;
@@ -40,7 +40,7 @@ class client {
 	private $url = 'https://api.groupme.com/v3';
 
 
-	/**
+	/*
 	 * When creating a new groupmeClient object
 	 * send array with 'access_token'
 	 * 

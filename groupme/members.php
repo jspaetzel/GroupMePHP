@@ -2,7 +2,7 @@
 
 class members extends client {
 	
-	/*
+	/**
 	 * add: Add members to a group
 	 * 
 	 * @param string required $id
@@ -31,7 +31,7 @@ class members extends client {
 		return $this->request($params);
 	}
 
-	/*
+	/**
 	 * results: Add members to a group
 	 * 
 	 * @param string required $group_id
@@ -49,7 +49,7 @@ class members extends client {
 		return $this->request($params);
 	}
 	
-	/*
+	/**
 	 * remove: Remove member from a group
 	 * 
 	 * @param string required $group_id

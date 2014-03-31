@@ -2,7 +2,7 @@
 
 class sms extends client {
 
-	/*
+	/**
 	 * enable: Enable SMS mode for up to 48 hours.
 	 * 
 	 * @param string required $duration
@@ -24,7 +24,7 @@ class sms extends client {
 		return $this->request($params);
 	}
 
-	/*
+	/**
 	 * disable: Disable SMS mode.
 	 * 
 	 * @return string $return

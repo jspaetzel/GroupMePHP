@@ -2,7 +2,7 @@
 
 class bots extends client {
 	
-	/*
+	/**
 	 * create: Create a new bot
 	 * 
 	 * @param array $args
@@ -25,7 +25,7 @@ class bots extends client {
 		return $this->request($params);
 	}
 
-	/*
+	/**
 	 * post: Post a message from a bot
 	 * 
 	 * bot_id required string 
@@ -46,7 +46,7 @@ class bots extends client {
 		return $this->request($params);
 	}
 	
-	/*
+	/**
 	 * index: List of bots that you have created
 	 * 
 	 * @param takes no parameters
@@ -62,7 +62,7 @@ class bots extends client {
 		return $this->request($params);
 	}
 	
-	/*
+	/**
 	 * destroy: Remove a bot that you have created
 	 * 
 	 * bot_id required string 

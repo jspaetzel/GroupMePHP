@@ -2,7 +2,7 @@
 
 class groups extends client {
 	
-	/*
+	/**
 	 * index: List the authenticated user's active groups.
 	 * 
 	 * @param array $args
@@ -23,7 +23,7 @@ class groups extends client {
 		return $this->request($params);
 	}
 	
-	/*
+	/**
 	 * former: List the authenticated user's former groups.
 	 * 
 	 * @return string $return
@@ -39,7 +39,7 @@ class groups extends client {
 		return $this->request($params);
 	}
 	
-	/*
+	/**
 	 * show: Load a specific group.
 	 * 
 	 * @param string required $id
@@ -57,7 +57,7 @@ class groups extends client {
 		return $this->request($params);
 	}
 	
-	/*
+	/**
 	 * create: Create a new group
 	 * 
 	 * @param string required $id
@@ -82,7 +82,7 @@ class groups extends client {
 		return $this->request($params);
 	}
 	
-	/*
+	/**
 	 * update: Update a group after creation
 	 * 
 	 * @param string required $id
@@ -107,7 +107,7 @@ class groups extends client {
 		return $this->request($params);
 	}
 	
-	/*
+	/**
 	 * destroy: Disband a group
 	 * 
 	 * @param string required $id

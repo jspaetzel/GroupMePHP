@@ -2,7 +2,7 @@
 
 class likes extends client {
 	
-	/*
+	/**
 	 * create: Like a message.
 	 * 
 	 * @param string required $conversation_id
@@ -21,7 +21,7 @@ class likes extends client {
 		return $this->request($params);
 	}
 	
-	/*
+	/**
 	 * destroy: Unlike a message.
 	 * 
 	 * @param string required $conversation_id
