@@ -93,6 +93,7 @@ class client {
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 		}
 		$response = curl_exec($c);
+		curl_close($c);
 		return $response;
 	}
 }
