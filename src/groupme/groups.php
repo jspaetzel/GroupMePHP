@@ -6,9 +6,8 @@ class groups extends client {
 	 * index: List the authenticated user's active groups.
 	 * 
 	 * @param array $args
-	 * 
-	 * page => integer — Fetch a particular page of results. Defaults to 1
-	 * per_page => integer — Define page size. Defaults to 10
+	 * 		page integer — Fetch a particular page of results. Defaults to 1
+	 * 		per_page integer — Define page size. Defaults to 10
 	 * 
 	 * @return string $return
 	 * 
@@ -60,13 +59,11 @@ class groups extends client {
 	/**
 	 * create: Create a new group
 	 * 
-	 * @param string required $id
 	 * @param array $args
-	 * 
-	 * name string
-	 * description string
-	 * image_url string
-	 * share boolean — If you pass a true value for share, we'll generate a share URL. Anybody with this URL can join the group.
+	 * 		name string
+	 * 		description string
+	 * 		image_url string
+	 * 		share boolean — If you pass a true value for share, we'll generate a share URL. Anybody with this URL can join the group.
 	 * 
 	 * @return string $return
 	 * 
@@ -85,13 +82,12 @@ class groups extends client {
 	/**
 	 * update: Update a group after creation
 	 * 
-	 * @param string required $id
+	 * @param string required $id ID of group to be modified
 	 * @param array $args
-	 * 
-	 * name string
-	 * description string
-	 * image_url string
-	 * share boolean — If you pass a true value for share, we'll generate a share URL. Anybody with this URL can join the group.
+	 * 		name string
+	 * 		description string
+	 * 		image_url string
+	 * 		share boolean — If you pass a true value for share, we'll generate a share URL. Anybody with this URL can join the group.
 	 * 
 	 * @return string $return
 	 * 

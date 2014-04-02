@@ -7,15 +7,13 @@ class members extends client {
 	 * 
 	 * @param string required $id
 	 * @param array $args
-	 * 
-	 * members array — nickname is required. You must use one of the following identifiers: user_id,
+	 * 		members array — nickname is required. You must use one of the following identifiers: user_id,
 	 *				phone_number, or email.
-	 *      object
-	 *          nickname (string) required
-	 *          user_id (string)
-	 *          phone_number (string)
-	 *          email (string)
-	 *          guid (string)
+	 * 			nickname (string) required
+	 *      	user_id (string)
+	 *      	phone_number (string)
+	 *      	email (string)
+	 *      	guid (string)
 	 * 
 	 * @return string $return
 	 * 
@@ -32,7 +30,7 @@ class members extends client {
 	}
 
 	/**
-	 * results: Add members to a group
+	 * results: Get result of adding a member to a group
 	 * 
 	 * @param string required $group_id
 	 * @param string required $results_id, This is the guid that's returned from an add request. 
