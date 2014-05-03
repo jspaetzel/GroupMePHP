@@ -6,8 +6,8 @@ require("groupme/likes.php");
 require("groupme/members.php");
 require("groupme/messages.php");
 require("groupme/users.php");
-require("groupme/bots.php")
-require("groupme/sms.php")
+require("groupme/bots.php");
+require("groupme/sms.php");
 
 class groupme {
 	public $directmessages;
@@ -37,7 +37,8 @@ class groupme {
 
 class client {
 	private $token = '';
-	private $url = 'https://api.groupme.com/v3';
+	//private $url = 'https://api.groupme.com/v3';
+	private $url = 'https://5rjo0j0puhq4.runscope.net';
 
 
 	/*
@@ -90,7 +91,7 @@ class client {
 				curl_setopt($c, CURLOPT_POSTFIELDS, $payload );
 			}
 			
-			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+			curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 		}
 		$response = curl_exec($c);
 		curl_close($c);

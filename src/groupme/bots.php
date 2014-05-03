@@ -57,7 +57,7 @@ class bots extends client {
 		$params = array (
 			'url' => '/bots',
 			'method' => 'GET',
-			'query' = array()
+			'query' => array()
 			);
 		
 		return $this->request($params);

@@ -41,7 +41,7 @@ class members extends client {
 		$params = array (
 			'url' => '/groups/' . $group_id . '/members/results/' . $results_id,
 			'method' => 'GET',
-			'query' = array()
+			'query' => array()
 			);
 		
 		return $this->request($params);
