@@ -39,7 +39,7 @@ class directmessages extends client {
 			'url' => '/direct_messages',
 			'method' => 'POST',
 			'query' => array(),
-			'payload' => $args
+			'payload' => array("direct_message"=>$args)
 		);
 		
 		return $this->request($params);
