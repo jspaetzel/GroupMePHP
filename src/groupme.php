@@ -70,6 +70,31 @@ class client {
 		return $query;
 	}
 
+	/**
+	 * @param $localFile : file path to file on this system
+	 * @param $applicationToken : A groupme application access token. Please note this is not a user/bot access token
+	 * @return mixed : returns url on groupme image service
+	 */
+	function imageServiceUpload($localFile, $applicationToken)
+	{
+	    $ch = curl_init();
+	    curl_setopt($ch, CURLOPT_HEADER, 0);
+	    curl_setopt($ch, CURLOPT_VERBOSE, 0);
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	    curl_setopt($ch, CURLOPT_POST, true);
+	
+	    curl_setopt($ch, CURLOPT_URL, 'https://image.groupme.com/pictures?access_token=' . $applicationToken);
+	
+	    $post_array = array(
+	        "file" => "@" . $localFile,
+	    );
+	    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_array);
+	    $result = curl_exec($ch);
+	    curl_close($ch);
+	    $result_decoded = json_decode($result);
+	    return $result_decoded->{'payload'}->{'url'};
+	}
+
 	/*
 	 * Overhead function that all requests utilize
 	 */	
