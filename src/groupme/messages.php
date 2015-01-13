@@ -30,16 +30,28 @@ class messages extends client {
 	 * @param array $args
 	 * 		source_guid required string — This is used for client-side deduplication.
 	 * 		text required string — This can be omitted if at least one attachment is present.
-	 * 
+	 *      attachments optional array - include array of attachments to attach images, etc.
 	 * @return string $return
 	 * 
 	 */
 	public function create($id, $args){
+
+        // Construct the payload, optionally with attachments
+        $payload = array(
+            "source_guid" => $args[0],
+            "text" => $args[1]
+        );
+
+        if ( !empty($args[2]) ) {
+            $payload = array_merge($payload, array("attachments" => array($args[2])));
+        }
+
 		$params = array(
 			'url' => '/groups/' . $id . '/messages',
 			'method' => 'POST',
 			'query' => array(),
-			'payload' => $args
+			'payload' => 
+				array( "message" => $payload )
 		);
 		
 		return $this->request($params);

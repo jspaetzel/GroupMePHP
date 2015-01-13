@@ -19,7 +19,14 @@ class groupme {
 	public $bots;
 	public $sms;
 	
-	public function __construct($token) {
+	public function __construct($token = "") {
+
+        if ($token == "" ) {
+            // fallback to include file, should check if file exists but that did not work for me
+            include('groupme-config.php');
+            $token = $config_token;
+        }
+
 		if(isset($token)) {
 			$this->directmessages = new directmessages($token);
 			$this->groups = new groups($token);
@@ -37,8 +44,7 @@ class groupme {
 
 class client {
 	private $token = '';
-	//private $url = 'https://api.groupme.com/v3';
-	private $url = 'https://5rjo0j0puhq4.runscope.net';
+	private $url = 'https://api.groupme.com/v3';
 
 
 	/*
@@ -70,31 +76,6 @@ class client {
 		return $query;
 	}
 
-	/**
-	 * @param $localFile : file path to file on this system
-	 * @param $applicationToken : A groupme application access token. Please note this is not a user/bot access token
-	 * @return mixed : returns url on groupme image service
-	 */
-	function imageServiceUpload($localFile, $applicationToken)
-	{
-	    $ch = curl_init();
-	    curl_setopt($ch, CURLOPT_HEADER, 0);
-	    curl_setopt($ch, CURLOPT_VERBOSE, 0);
-	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	    curl_setopt($ch, CURLOPT_POST, true);
-	
-	    curl_setopt($ch, CURLOPT_URL, 'https://image.groupme.com/pictures?access_token=' . $applicationToken);
-	
-	    $post_array = array(
-	        "file" => "@" . $localFile,
-	    );
-	    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_array);
-	    $result = curl_exec($ch);
-	    curl_close($ch);
-	    $result_decoded = json_decode($result);
-	    return $result_decoded->{'payload'}->{'url'};
-	}
-
 	/*
 	 * Overhead function that all requests utilize
 	 */	
@@ -118,9 +99,10 @@ class client {
 			
 			curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 		}
+        $info = curl_getinfo($c);
+        //error_log(json_encode($info));
 		$response = curl_exec($c);
 		curl_close($c);
 		return $response;
 	}
 }
-?>

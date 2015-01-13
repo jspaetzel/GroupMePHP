@@ -1,22 +1,57 @@
-PHP Client Library for the Groupme v3 API
-Warning: This code is untested, under development, and very liable to be modified
+##Unofficial PHP Client Library for the Groupme v3 API
 
+###Examples
+These are some basic examples for how to interact with the api via the library.
+The APIKEY in these examples is the API key of a user, not a groupme bot key or application key.
 
-Example, list index of groups for authenticated user: 
+#### Send a message to a group
 ~~~~~ php
-<?php
 require('groupme.php');
-
-$gm = new groupme('APIKEY');
-
-$gm->groups->index(array()); 
-?>
+function send($group_id, $message) {
+    $gm = new groupme('APIKEY');
+    $this->gm->messages->create(
+        $group_id,
+        array("THISISAGUID123", $message)
+    );
+}
+send(12345678, "Hello Group");
 ~~~~~
 
-Todo:
+#### Send a direct message to a user
+~~~~~ php
+require('groupme.php');
+function dm($user_id, $message) {
+    $gm = new groupme('APIKEY');
+    $this->gm->directmessages->create(
+        array(
+            "source_guid" => "THISISAGUID123",
+            "recipient_id" => $user_id,
+            "text" => $message
+        )
+    );
+}
+dm(12345678, "Hello User");
+~~~~~
+
+
+####Get index of groups for authenticated user: 
+~~~~~ php
+require('groupme.php');
+$gm = new groupme('APIKEY');
+
+$index = $gm->groups->index(array()); 
+~~~~~
+
+#### Get only the members of a group as json
+~~~~~ php
+$group_id = 1234567;
+require('groupme.php');
+$gm = new groupme('APIKEY');
+echo json_decode($this->gm->groups->show($group_id), true)['response']['members'];
+~~~~~
+
+####Todo:
 - Image service uploads
-- Image attachment
-- Location Attachment
-- Emoji Attachment
+- Emojis
 - Tests
-- decide how to format parameters to be more usable
+- Abstract away some of the complex arrays that are currently used with parameters
