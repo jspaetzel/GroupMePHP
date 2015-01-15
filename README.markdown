@@ -9,7 +9,7 @@ The APIKEY in these examples is the API key of a user, not a groupme bot key or 
 require('groupme.php');
 function send($group_id, $message) {
     $gm = new groupme('APIKEY');
-    $this->gm->messages->create(
+    $gm->messages->create(
         $group_id,
         array("THISISAGUID123", $message)
     );
@@ -22,7 +22,7 @@ send(12345678, "Hello Group");
 require('groupme.php');
 function dm($user_id, $message) {
     $gm = new groupme('APIKEY');
-    $this->gm->directmessages->create(
+    $gm->directmessages->create(
         array(
             "source_guid" => "THISISAGUID123",
             "recipient_id" => $user_id,
@@ -34,12 +34,12 @@ dm(12345678, "Hello User");
 ~~~~~
 
 
-####Get index of groups for authenticated user: 
+####Get index of groups for authenticated user:
 ~~~~~ php
 require('groupme.php');
 $gm = new groupme('APIKEY');
 
-$index = $gm->groups->index(array()); 
+$index = $gm->groups->index(array());
 ~~~~~
 
 #### Get only the members of a group as json
@@ -47,7 +47,7 @@ $index = $gm->groups->index(array());
 $group_id = 1234567;
 require('groupme.php');
 $gm = new groupme('APIKEY');
-echo json_decode($this->gm->groups->show($group_id), true)['response']['members'];
+echo json_decode($gm->groups->show($group_id), true)['response']['members'];
 ~~~~~
 
 ####Todo:
