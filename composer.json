@@ -1,6 +1,5 @@
 {
   "name": "zzbomb/groupme",
-  "version": 0.1,
   "type": "library",
   "description": "Groupme Library for PHP",
   "keywords": [
@@ -26,7 +25,7 @@
     "phpunit/phpunit-selenium": "1.4.2"
   },
   "autoload": {
-    "psr-0": {
+    "psr-4": {
       "GroupMePHP\\": "src/"
     }
   }
