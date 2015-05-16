@@ -25,13 +25,6 @@ class groupme {
     public $leaderboard;
 	
 	public function __construct($token = "") {
-
-        if ($token == "" ) {
-            // fallback to include file, should check if file exists but that did not work for me
-            include('groupme-config.php');
-            $token = $config_token;
-        }
-
 		if(isset($token)) {
 			$this->directmessages = new directmessages($token);
 			$this->groups = new groups($token);
