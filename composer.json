@@ -27,7 +27,7 @@
   },
   "autoload": {
     "psr-0": {
-      "GroupMePHP": "src"
+      "GroupMePHP\\": "src/"
     }
   }
 }
