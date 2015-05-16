@@ -1,4 +1,5 @@
 <?php
+namespace GroupMePHP;
 
 class groups extends client {
 	
@@ -41,7 +42,7 @@ class groups extends client {
 	/**
 	 * show: Load a specific group.
 	 * 
-	 * @param string required $id
+	 * @param string $id
 	 * 
 	 * @return string $return
 	 * 
@@ -78,20 +79,20 @@ class groups extends client {
 		
 		return $this->request($params);
 	}
-	
-	/**
-	 * update: Update a group after creation
-	 * 
-	 * @param string required $id ID of group to be modified
-	 * @param array $args
-	 * 		name string
-	 * 		description string
-	 * 		image_url string
-	 * 		share boolean — If you pass a true value for share, we'll generate a share URL. Anybody with this URL can join the group.
-	 * 
-	 * @return string $return
-	 * 
-	 */
+
+    /**
+     * update: Update a group after creation
+     *
+     * @param $id
+     * @param array $args
+     *        name string
+     *        description string
+     *        image_url string
+     *        share boolean — If you pass a true value for share, we'll generate a share URL. Anybody with this URL can join the group.
+     * @return string $return
+     *
+     * @internal param required $string $id ID of group to be modified
+     */
 	public function update($id, $args){
 		$params = array(
 			'url' => '/groups/' . $id . '/update',
@@ -106,12 +107,12 @@ class groups extends client {
 	/**
 	 * destroy: Disband a group
 	 * 
-	 * @param string required $id
+	 * @param string $id
 	 * 
 	 * @return string $return
 	 * 
 	 */
-	public function destroy($id, $args){
+	public function destroy($id){
 		$params = array(
 			'url' => '/groups/' . $id . '/destroy',
 			'method' => 'POST',
@@ -120,5 +121,45 @@ class groups extends client {
 		
 		return $this->request($params);
 	}
+
+    /**
+     * join: Join a shared group
+     *
+     * @param $group_id
+     * @param $share_token
+     * @return string $return
+     *
+     * @internal param string $id
+     *
+     */
+    public function join($group_id, $share_token){
+        $params = array(
+            'url' => "/groups/$group_id/join/$share_token",
+            'method' => 'POST',
+            'query' => array(),
+        );
+
+        return $this->request($params);
+    }
+
+    /**
+     * rejoin: Rejoin a group. Only works if you previously removed yourself.
+     *
+     * @param $group_id
+     * @return string $return
+     *
+     * @internal param string $id
+     *
+     */
+    public function rejoin($group_id){
+        $params = array(
+            'url' => "/groups/join",
+            'method' => 'POST',
+            'query' => array(),
+            'payload' => array("group_id" => $group_id)
+        );
+
+        return $this->request($params);
+    }
 }
 ?>

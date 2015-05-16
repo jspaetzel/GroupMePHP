@@ -1,4 +1,5 @@
 <?php
+namespace GroupMePHP;
 
 /**
  * Class members
@@ -31,6 +32,17 @@ class members extends client {
 		
 		return $this->request($params);
 	}
+
+    public function update($group_id, $nickname) {
+        $params = array(
+            'url' => "/groups/$group_id/memberships/update",
+            'method' => 'POST',
+            'query' => array(),
+            'payload' => array("membership" => array("nickname" => $nickname))
+        );
+
+        return $this->request($params);
+    }
 
     /**
      * results: Get result of adding a member to a group
@@ -68,4 +80,3 @@ class members extends client {
 		return $this->request($params);
 	}
 }
-?>

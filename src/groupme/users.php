@@ -1,4 +1,5 @@
 <?php
+namespace GroupMePHP;
 
 class users extends client {
 	
@@ -8,7 +9,7 @@ class users extends client {
 	 * @return string $return
 	 * 
 	 */
-	public function index($args){
+	public function index(){
 		$params = array(
 			'url' => '/users/me',
 			'method' => 'GET',

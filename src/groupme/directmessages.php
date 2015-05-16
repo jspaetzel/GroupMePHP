@@ -1,4 +1,5 @@
 <?php
+namespace GroupMePHP;
 
 class directmessages extends client {
 	

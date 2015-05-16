@@ -1,5 +1,7 @@
 <?php
 
+namespace GroupMePHP;
+
 require("groupme/directmessages.php");
 require("groupme/groups.php");
 require("groupme/likes.php");
@@ -8,6 +10,8 @@ require("groupme/messages.php");
 require("groupme/users.php");
 require("groupme/bots.php");
 require("groupme/sms.php");
+require("groupme/leaderboard.php");
+
 
 class groupme {
 	public $directmessages;
@@ -18,6 +22,7 @@ class groupme {
 	public $users;
 	public $bots;
 	public $sms;
+    public $leaderboard;
 	
 	public function __construct($token = "") {
 
@@ -36,6 +41,7 @@ class groupme {
 			$this->users = new users($token);
 			$this->bots = new bots($token);
 			$this->sms = new sms($token);
+            $this->leaderboard = new leaderboard($token);
 		} else {
 			die('You must include a user or application token');
 		}
@@ -59,7 +65,7 @@ class client {
 	/*
 	 * Build query string from $args
 	 */
-	private function buildQueryString($args) {
+	public function buildQueryString($args) {
 		$args = $args + array("token" => $this->token);
 		
 		$query = "";
@@ -100,7 +106,6 @@ class client {
 			curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 		}
         $info = curl_getinfo($c);
-        //error_log(json_encode($info));
 		$response = curl_exec($c);
 		curl_close($c);
 		return $response;

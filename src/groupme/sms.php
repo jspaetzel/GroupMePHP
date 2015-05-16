@@ -1,11 +1,12 @@
 <?php
+namespace GroupMePHP;
 
 class sms extends client {
 
 	/**
 	 * enable: Enable SMS mode for up to 48 hours.
 	 * 
-	 * @param string required $duration
+	 * @param string $duration
 	 * @param string $registration_id
 	 * 
 	 * @return string $return

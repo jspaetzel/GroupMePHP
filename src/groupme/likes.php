@@ -1,12 +1,13 @@
 <?php
+namespace GroupMePHP;
 
 class likes extends client {
 	
 	/**
 	 * create: Like a message.
 	 * 
-	 * @param string required $conversation_id
-	 * @param string required $message_id
+	 * @param string $conversation_id
+	 * @param string $message_id
 	 * 
 	 * @return string $return
 	 * 
@@ -24,8 +25,8 @@ class likes extends client {
 	/**
 	 * destroy: Unlike a message.
 	 * 
-	 * @param string required $conversation_id
-	 * @param string required $message_id
+	 * @param string $conversation_id
+	 * @param string $message_id
 	 * 
 	 * @return string $return
 	 * 

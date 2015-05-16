@@ -2,6 +2,8 @@
 ## IDEA
 ################
 .idea/
+vendor/
+composer.phar
 
 #################
 ## Eclipse
