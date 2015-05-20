@@ -1,6 +1,7 @@
 ##Unofficial PHP Client Library for the Groupme v3 API
 
 Install with composer
+~~~~~
 "zzbomb/groupme": "dev-master"
 ~~~~~
 
