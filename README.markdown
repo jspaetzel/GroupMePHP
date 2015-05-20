@@ -1,5 +1,9 @@
 ##Unofficial PHP Client Library for the Groupme v3 API
 
+Install with composer
+"zzbomb/groupme": "dev-master"
+~~~~~
+
 ###Examples
 These are some basic examples for how to interact with the api via the library.
 The APIKEY in these examples is the API key of a user, not a groupme bot key or application key.
