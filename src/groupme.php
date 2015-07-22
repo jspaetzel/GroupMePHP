@@ -11,7 +11,7 @@ require("groupme/users.php");
 require("groupme/bots.php");
 require("groupme/sms.php");
 require("groupme/leaderboard.php");
-
+require("groupme/images.php");
 
 class groupme {
 	public $directmessages;
@@ -22,7 +22,7 @@ class groupme {
 	public $users;
 	public $bots;
 	public $sms;
-    public $leaderboard;
+	public $leaderboard;
 	
 	public function __construct($token = "") {
 		if(isset($token)) {
@@ -34,7 +34,8 @@ class groupme {
 			$this->users = new users($token);
 			$this->bots = new bots($token);
 			$this->sms = new sms($token);
-            $this->leaderboard = new leaderboard($token);
+			$this->images = new images($token);
+			$this->leaderboard = new leaderboard($token);
 		} else {
 			die('You must include a user or application token');
 		}
@@ -43,7 +44,7 @@ class groupme {
 
 class client {
 	private $token = '';
-	private $url = 'https://api.groupme.com/v3';
+	protected $url = 'https://api.groupme.com/v3';
 
 
 	/*
@@ -58,8 +59,8 @@ class client {
 	/*
 	 * Build query string from $args
 	 */
-	public function buildQueryString($args) {
-		$args = $args + array("token" => $this->token);
+	public function buildQueryString($args = array()) {
+		$args = array_merge($args, array("token" => $this->token));
 		
 		$query = "";
 		if (isset($args)) {
@@ -92,15 +93,25 @@ class client {
 		
 		if($args['method'] == "POST"){
 			if ( isset($args['payload']) ) {
-				$payload = json_encode($args['payload']);
+				$payload = "";
+				if ( isset($args['payload']['file']) ) {
+					$payload = $args['payload'];
+				}
+				else {
+					$payload = json_encode($args['payload']);
+					curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+				}
+								
 				curl_setopt($c, CURLOPT_POSTFIELDS, $payload );
 			}
-			
-			curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 		}
-        $info = curl_getinfo($c);
+		$info = curl_getinfo($c);
 		$response = curl_exec($c);
 		curl_close($c);
 		return $response;
 	}
+}
+
+class image_client extends client {
+	protected $url = 'https://image.groupme.com';
 }
