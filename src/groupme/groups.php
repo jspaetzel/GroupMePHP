@@ -13,7 +13,7 @@ class groups extends client {
 	 * @return string $return
 	 * 
 	 */
-	public function index($args){
+	public function index($args = array()){
 		$params = array(
 			'url' => '/groups',
 			'method' => 'GET',
