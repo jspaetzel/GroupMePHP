@@ -129,8 +129,6 @@ class groups extends client {
      * @param $share_token
      * @return string $return
      *
-     * @internal param string $id
-     *
      */
     public function join($group_id, $share_token){
         $params = array(
@@ -148,8 +146,6 @@ class groups extends client {
      * @param $group_id
      * @return string $return
      *
-     * @internal param string $id
-     *
      */
     public function rejoin($group_id){
         $params = array(
@@ -157,6 +153,27 @@ class groups extends client {
             'method' => 'POST',
             'query' => array(),
             'payload' => array("group_id" => $group_id)
+        );
+
+        return $this->request($params);
+    }
+
+    /**
+     * changeOwners: Change owners of requested groups. This action is only available to the current group owner.
+     * 
+     * @param array $args
+     * 		    group_id string — The ID of the group
+     * 		    owner_id string — The ID of the new owner
+     * 
+     * @return string $return
+     * 
+     */
+    public function changeOwners($args = array()){
+	$params = array(
+            'url' => '/groups/change_owners',
+            'method' => 'POST',
+            'query' => array(),
+            'payload' => array("requests" => $args)
         );
 
         return $this->request($params);
