@@ -1,12 +1,12 @@
 {
-  "name": "zzbomb/groupme",
+  "name": "jspaetzel/groupme",
   "type": "library",
   "description": "Groupme Library for PHP",
   "keywords": [
     "php",
     "groupme"
   ],
-  "homepage": "https://github.com/zzbomb/GroupMePHP",
+  "homepage": "https://github.com/jspaetzel/GroupMePHP",
   "license": "MIT",
   "authors": [
     {

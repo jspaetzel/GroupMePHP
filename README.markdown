@@ -2,7 +2,7 @@
 
 Install with composer
 ~~~~~
-"zzbomb/groupme": "dev-master"
+"jspaetzel/groupme": "dev-master"
 ~~~~~
 
 ###Examples
