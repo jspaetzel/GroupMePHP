@@ -1,11 +1,11 @@
-##Unofficial PHP Client Library for the Groupme v3 API
+## Unofficial PHP Client Library for the Groupme v3 API
 
 Install with composer
 ~~~~~
 "jspaetzel/groupme": "dev-master"
 ~~~~~
 
-###Examples
+### Examples
 These are some basic examples for how to interact with the api via the library.
 The APIKEY in these examples is the API key of a user, not a groupme bot key or application key.
 
@@ -39,7 +39,7 @@ dm(12345678, "Hello User");
 ~~~~~
 
 
-####Get index of groups for authenticated user:
+#### Get index of groups for authenticated user:
 ~~~~~ php
 require('groupme.php');
 $gm = new GroupMePHP\groupme('APIKEY');
@@ -55,7 +55,7 @@ $gm = new GroupMePHP\groupme('APIKEY');
 echo json_decode($gm->groups->show($group_id), true)['response']['members'];
 ~~~~~
 
-####Todo:
+#### Todo:
 - Image service uploads
 - Emojis
 - Tests
