@@ -1,14 +1,14 @@
 <?php
-namespace GroupMePHP;
+namespace GroupMePHP\Services;
 
-class sms extends client {
+class SmsService extends Service {
 
 	/**
 	 * enable: Enable SMS mode for up to 48 hours.
-	 * 
+	 *
 	 * @param string $duration
 	 * @param string $registration_id
-	 * 
+	 *
 	 * @return string $return
 	 */
 	public function enable($duration, $registration_id) {
@@ -21,13 +21,13 @@ class sms extends client {
 				'registration_id' => $registration_id
 				)
 		);
-		
+
 		return $this->request($params);
 	}
 
 	/**
 	 * disable: Disable SMS mode.
-	 * 
+	 *
 	 * @return string $return
 	 */
 	public function disable() {
@@ -37,8 +37,7 @@ class sms extends client {
 			'query' => array(),
 			'payload' => array()
 		);
-		
+
 		return $this->request($params);
 	}
 }
-?>

@@ -1,18 +1,18 @@
 <?php
-namespace GroupMePHP;
+namespace GroupMePHP\Services;
 
-class messages extends client {
-	
+class MessagesService extends Service {
+
 	/**
 	 * index: Retrieve messages for a group.
-	 * 
+	 *
 	 * @param string $id
 	 * @param array $args
 	 * 		before_id string — Returns 20 messages created before the given message ID
 	 * 		since_id string — Returns 20 messages created after the given message ID
-	 * 
+	 *
 	 * @return string $return
-	 * 
+	 *
 	 */
 	public function index($id, $args){
 		$params = array(
@@ -20,20 +20,20 @@ class messages extends client {
 			'method' => 'GET',
 			'query' => $args
 		);
-		
+
 		return $this->request($params);
 	}
 
 	/**
 	 * create: Create messages in a group.
-	 * 
+	 *
 	 * @param string $id
 	 * @param array $args
 	 * 		source_guid required string — This is used for client-side deduplication.
 	 * 		text required string — This can be omitted if at least one attachment is present.
 	 *      attachments optional array - include array of attachments to attach images, etc.
 	 * @return string $return
-	 * 
+	 *
 	 */
 	public function create($id, $args){
 
@@ -51,11 +51,10 @@ class messages extends client {
 			'url' => '/groups/' . $id . '/messages',
 			'method' => 'POST',
 			'query' => array(),
-			'payload' => 
+			'payload' =>
 				array( "message" => $payload )
 		);
-		
+
 		return $this->request($params);
 	}
 }
-?>

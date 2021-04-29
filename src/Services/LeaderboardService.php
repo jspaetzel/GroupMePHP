@@ -1,7 +1,7 @@
 <?php
-namespace GroupMePHP;
+namespace GroupMePHP\Services;
 
-class leaderboard extends client {
+class LeaderboardService extends Service {
 
     /**
      * A list of the liked messages in the group for a given period of time. Messages are ranked in order of number of likes.
@@ -58,4 +58,3 @@ class leaderboard extends client {
         return $this->request($params);
     }
 }
-?>
