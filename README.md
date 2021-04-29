@@ -48,3 +48,6 @@ $group_service = new \GroupMePHP\Services\GroupsService($client);
 $response = $group_service->show(1234567);
 $members = json_decode($response)['response']['members'];
 ~~~~~
+
+### Want to contribute?
+See the [contribution guide](./CONTRIBUTING.md)
