@@ -3,7 +3,8 @@ namespace GroupMePHP\Services;
 
 use GroupMePHP\Client;
 
-class Service {
+class Service
+{
     protected $client;
 
     public function __construct(Client $client)

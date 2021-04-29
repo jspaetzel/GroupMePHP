@@ -2,6 +2,7 @@
 
 namespace GroupMePHP;
 
-class ImageClient extends Client {
+class ImageClient extends Client
+{
     protected $url = 'https://image.groupme.com';
 }

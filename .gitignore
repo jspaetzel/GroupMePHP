@@ -222,3 +222,5 @@ pip-log.txt
 .mr.developer.cfg
 
 tests/.env
+php-cs-fixer.phar
+.php_cs.cache

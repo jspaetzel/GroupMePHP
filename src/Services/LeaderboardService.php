@@ -1,7 +1,8 @@
 <?php
 namespace GroupMePHP\Services;
 
-class LeaderboardService extends Service {
+class LeaderboardService extends Service
+{
 
     /**
      * A list of the liked messages in the group for a given period of time. Messages are ranked in order of number of likes.
@@ -12,7 +13,8 @@ class LeaderboardService extends Service {
      * @return string $return
      *
      */
-    public function index($group_id, $period){
+    public function index($group_id, $period)
+    {
         $params = array(
             'url' => "/groups/$group_id/likes?period=$period",
             'method' => 'GET',
@@ -30,7 +32,8 @@ class LeaderboardService extends Service {
      * @return string $return
      *
      */
-    public function myLikes($group_id){
+    public function myLikes($group_id)
+    {
         $params = array(
             'url' => "/groups/$group_id/likes/mine",
             'method' => 'GET',
@@ -48,7 +51,8 @@ class LeaderboardService extends Service {
      * @return string $return
      *
      */
-    public function myHits($group_id){
+    public function myHits($group_id)
+    {
         $params = array(
             'url' => "/groups/$group_id/likes/for_me",
             'method' => 'GET',
