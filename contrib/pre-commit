@@ -5,7 +5,7 @@
 # If you absolutely must commit without testing,
 # use: git commit --no-verify
 
-# This will check only staged files to be commited.
+# This will check only staged files to be committed.
 filenames=($(git diff --staged --name-only HEAD))
 
 # This will set text to red in terminal.
@@ -37,6 +37,3 @@ then
 fi
 
 echo "${text_green}PHP CS Fixer finished execution successfully.${text_reset}"
-
-echo "Running PHPStan"
-php vendor/bin/phpstan analyse
