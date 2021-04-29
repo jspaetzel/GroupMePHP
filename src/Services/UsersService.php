@@ -3,12 +3,10 @@ namespace GroupMePHP\Services;
 
 class UsersService extends Service
 {
-
     /**
-     * me: Get details about the authenticated user.
+     * Get details about the authenticated user.
      *
-     * @return string $return
-     *
+     * @return string
      */
     public function get()
     {

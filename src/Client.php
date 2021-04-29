@@ -24,7 +24,7 @@ class Client
 
         $query = "";
         foreach ($args as $key => $val) {
-            if (strlen($query) > 0) {
+            if ($query !== '') {
                 $query .= "&";
             } else {
                 $query .= "?";
@@ -50,18 +50,16 @@ class Client
         $curlurl = $this->url . $args['url'] . $this->buildQueryString($args['query']);
         curl_setopt($c, CURLOPT_URL, $curlurl);
 
-        if ($args['method'] == "POST") {
-            if (isset($args['payload'])) {
-                $payload = "";
-                if (isset($args['payload']['file'])) {
-                    $payload = $args['payload'];
-                } else {
-                    $payload = json_encode($args['payload']);
-                    curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-                }
-
-                curl_setopt($c, CURLOPT_POSTFIELDS, $payload);
+        if (($args['method'] === "POST") && isset($args['payload'])) {
+            $payload = "";
+            if (isset($args['payload']['file'])) {
+                $payload = $args['payload'];
+            } else {
+                $payload = json_encode($args['payload']);
+                curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
             }
+
+            curl_setopt($c, CURLOPT_POSTFIELDS, $payload);
         }
         $info = curl_getinfo($c);
         $response = curl_exec($c);

@@ -3,9 +3,8 @@ namespace GroupMePHP\Services;
 
 class BotsService extends Service
 {
-
     /**
-     * create: Create a new bot
+     * Create a new bot
      *
      * @param array $args
      *      bot[name] required string
@@ -13,8 +12,7 @@ class BotsService extends Service
      *      bot[avatar_url] string
      *      bot[callback_url string
      *
-     * @return string $return
-     *
+     * @return string
      */
     public function create($args)
     {
@@ -29,15 +27,14 @@ class BotsService extends Service
     }
 
     /**
-     * post: Post a message from a bot
+     * Post a message from a bot
      *
      * @param array $args
      * 		bot_id required string
      * 		text required string
      * 		picture_url string — Image must be processed through image service.
      *
-     * @return string $return
-     *
+     * @return string
      */
     public function post($args)
     {
@@ -52,7 +49,7 @@ class BotsService extends Service
     }
 
     /**
-     * index: List of bots that you have created
+     * List of bots that you have created
      *
      * @return mixed
      */
@@ -68,13 +65,10 @@ class BotsService extends Service
     }
 
     /**
-     * destroy: Remove a bot that you have created
+     * Remove a bot that you have created
      *
      * @param string $bot_id
      * @return string $return
-     *
-     * @internal param string $bot_id
-     *
      */
     public function destroy($bot_id)
     {

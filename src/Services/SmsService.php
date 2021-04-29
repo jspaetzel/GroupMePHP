@@ -3,14 +3,13 @@ namespace GroupMePHP\Services;
 
 class SmsService extends Service
 {
-
     /**
-     * enable: Enable SMS mode for up to 48 hours.
+     * Enable SMS mode for up to 48 hours.
      *
      * @param string $duration
      * @param string $registration_id
      *
-     * @return string $return
+     * @return string
      */
     public function enable($duration, $registration_id)
     {
@@ -28,9 +27,9 @@ class SmsService extends Service
     }
 
     /**
-     * disable: Disable SMS mode.
+     * Disable SMS mode.
      *
-     * @return string $return
+     * @return string
      */
     public function disable()
     {

@@ -1,14 +1,11 @@
 <?php
 namespace GroupMePHP\Services;
 
-/**
- * Class members
- */
 class MembersService extends Service
 {
 
     /**
-     * add: Add members to a group
+     * Add members to a group
      *
      * @param string|int $id
      * @param array $args
@@ -21,7 +18,6 @@ class MembersService extends Service
      *      	guid (string)
      *
      * @return string
-     *
      */
     public function add($id, $args)
     {
@@ -48,11 +44,13 @@ class MembersService extends Service
     }
 
     /**
-     * results: Get result of adding a member to a group
+     * Get result of adding a member to a group
+     *
      * @param string|int $group_id
      * @param string $results_id, This is the guid that's returned from an add request.
      *
      * Expects 503 or 404 or 200 response
+     *
      * @return mixed
      */
     public function results($group_id, $results_id)
@@ -67,13 +65,12 @@ class MembersService extends Service
     }
 
     /**
-     * remove: Remove member from a group
+     * Remove member from a group
      *
      * @param string|int $group_id
      * @param string $user_id
      *
-     * @return string $return
-     *
+     * @return string
      */
     public function remove($group_id, $user_id)
     {

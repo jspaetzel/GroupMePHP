@@ -5,7 +5,7 @@ class GroupsService extends Service
 {
 
     /**
-     * index: List the authenticated user's active groups.
+     * List the authenticated user's active groups.
      *
      * @param array $args
      * 		page integer — Fetch a particular page of results. Defaults to 1
@@ -25,7 +25,7 @@ class GroupsService extends Service
     }
 
     /**
-     * former: List the authenticated user's former groups.
+     * List the authenticated user's former groups.
      *
      * @return string
      */
@@ -41,7 +41,7 @@ class GroupsService extends Service
     }
 
     /**
-     * show: Load a specific group.
+     * Load a specific group.
      *
      * @param string|int $id
      *
@@ -59,7 +59,7 @@ class GroupsService extends Service
     }
 
     /**
-     * create: Create a new group
+     * Create a new group
      *
      * @param array $args
      * 		name string
@@ -82,7 +82,7 @@ class GroupsService extends Service
     }
 
     /**
-     * update: Update a group after creation
+     * Update a group after creation
      *
      * @param string|int $id
      * @param array $args
@@ -91,8 +91,6 @@ class GroupsService extends Service
      *        image_url string
      *        share boolean — If you pass a true value for share, we'll generate a share URL. Anybody with this URL can join the group.
      * @return string
-     *
-     * @internal param required $string $id ID of group to be modified
      */
     public function update($id, $args)
     {
@@ -107,12 +105,11 @@ class GroupsService extends Service
     }
 
     /**
-     * destroy: Disband a group
+     * Disband a group
      *
      * @param string|int $id
      *
      * @return string
-     *
      */
     public function destroy($id)
     {
@@ -126,7 +123,7 @@ class GroupsService extends Service
     }
 
     /**
-     * join: Join a shared group
+     * Join a shared group
      *
      * @param string|int $group_id
      * @param string $share_token
@@ -144,7 +141,7 @@ class GroupsService extends Service
     }
 
     /**
-     * rejoin: Rejoin a group. Only works if you previously removed yourself.
+     * Rejoin a group. Only works if you previously removed yourself.
      *
      * @param string|int $group_id
      * @return string
@@ -162,7 +159,7 @@ class GroupsService extends Service
     }
 
     /**
-     * changeOwners: Change owners of requested groups. This action is only available to the current group owner.
+     * Change owners of requested groups. This action is only available to the current group owner.
      *
      * @param array $args
      * 		    group_id string — The ID of the group

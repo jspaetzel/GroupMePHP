@@ -3,15 +3,13 @@ namespace GroupMePHP\Services;
 
 class LeaderboardService extends Service
 {
-
     /**
      * A list of the liked messages in the group for a given period of time. Messages are ranked in order of number of likes.
      *
      * @param string $group_id
      * @param string $period <day|week|month|>
      *
-     * @return string $return
-     *
+     * @return string
      */
     public function index($group_id, $period)
     {
@@ -29,8 +27,7 @@ class LeaderboardService extends Service
      *
      * @param string $group_id
      *
-     * @return string $return
-     *
+     * @return string
      */
     public function myLikes($group_id)
     {
@@ -48,8 +45,7 @@ class LeaderboardService extends Service
      *
      * @param string $group_id
      *
-     * @return string $return
-     *
+     * @return string
      */
     public function myHits($group_id)
     {

@@ -3,15 +3,13 @@ namespace GroupMePHP\Services;
 
 class LikesService extends Service
 {
-
     /**
-     * create: Like a message.
+     * Like a message.
      *
      * @param string $conversation_id
      * @param string $message_id
      *
-     * @return string $return
-     *
+     * @return string
      */
     public function create($conversation_id, $message_id)
     {
@@ -25,13 +23,12 @@ class LikesService extends Service
     }
 
     /**
-     * destroy: Unlike a message.
+     * Unlike a message.
      *
      * @param string $conversation_id
      * @param string $message_id
      *
      * @return string $return
-     *
      */
     public function destroy($conversation_id, $message_id)
     {

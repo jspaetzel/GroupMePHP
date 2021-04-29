@@ -5,11 +5,10 @@ class ImagesService extends Service
 {
 
     /**
-     * pictures: Uploads a picture to the GroupMe Image servvice and returns the URL.
+     * Uploads a picture to the GroupMe Image servvice and returns the URL.
      *
      * @param string $url to image
      * @return string from GroupMe API
-     *
      */
     public function pictures($url)
     {
