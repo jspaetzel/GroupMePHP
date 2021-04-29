@@ -10,7 +10,7 @@ class MembersService extends Service
     /**
      * add: Add members to a group
      *
-     * @param string $id
+     * @param string|int $id
      * @param array $args
      * 		members array — nickname is required. You must use one of the following identifiers: user_id,
      *				phone_number, or email.
@@ -20,7 +20,7 @@ class MembersService extends Service
      *      	email (string)
      *      	guid (string)
      *
-     * @return string $return
+     * @return string
      *
      */
     public function add($id, $args)
@@ -49,8 +49,8 @@ class MembersService extends Service
 
     /**
      * results: Get result of adding a member to a group
-     * @param $group_id
-     * @param $results_id, This is the guid that's returned from an add request.
+     * @param string|int $group_id
+     * @param string $results_id, This is the guid that's returned from an add request.
      *
      * Expects 503 or 404 or 200 response
      * @return mixed
@@ -69,7 +69,7 @@ class MembersService extends Service
     /**
      * remove: Remove member from a group
      *
-     * @param string $group_id
+     * @param string|int $group_id
      * @param string $user_id
      *
      * @return string $return

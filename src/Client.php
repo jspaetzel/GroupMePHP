@@ -23,15 +23,13 @@ class Client
         $args = array_merge($args, array("token" => $this->token));
 
         $query = "";
-        if (isset($args)) {
-            foreach ($args as $key => $val) {
-                if (strlen($query) > 0) {
-                    $query .= "&";
-                } else {
-                    $query .= "?";
-                }
-                $query .= $key . '=' . $val;
+        foreach ($args as $key => $val) {
+            if (strlen($query) > 0) {
+                $query .= "&";
+            } else {
+                $query .= "?";
             }
+            $query .= $key . '=' . $val;
         }
         return $query;
     }

@@ -11,8 +11,7 @@ class GroupsService extends Service
      * 		page integer — Fetch a particular page of results. Defaults to 1
      * 		per_page integer — Define page size. Defaults to 10
      *
-     * @return string $return
-     *
+     * @return string
      */
     public function index($args = array())
     {
@@ -28,8 +27,7 @@ class GroupsService extends Service
     /**
      * former: List the authenticated user's former groups.
      *
-     * @return string $return
-     *
+     * @return string
      */
     public function former()
     {
@@ -45,10 +43,9 @@ class GroupsService extends Service
     /**
      * show: Load a specific group.
      *
-     * @param string $id
+     * @param string|int $id
      *
-     * @return string $return
-     *
+     * @return string
      */
     public function show($id)
     {
@@ -70,8 +67,7 @@ class GroupsService extends Service
      * 		image_url string
      * 		share boolean — If you pass a true value for share, we'll generate a share URL. Anybody with this URL can join the group.
      *
-     * @return string $return
-     *
+     * @return string
      */
     public function create($args)
     {
@@ -88,13 +84,13 @@ class GroupsService extends Service
     /**
      * update: Update a group after creation
      *
-     * @param $id
+     * @param string|int $id
      * @param array $args
      *        name string
      *        description string
      *        image_url string
      *        share boolean — If you pass a true value for share, we'll generate a share URL. Anybody with this URL can join the group.
-     * @return string $return
+     * @return string
      *
      * @internal param required $string $id ID of group to be modified
      */
@@ -113,9 +109,9 @@ class GroupsService extends Service
     /**
      * destroy: Disband a group
      *
-     * @param string $id
+     * @param string|int $id
      *
-     * @return string $return
+     * @return string
      *
      */
     public function destroy($id)
@@ -132,10 +128,9 @@ class GroupsService extends Service
     /**
      * join: Join a shared group
      *
-     * @param $group_id
-     * @param $share_token
-     * @return string $return
-     *
+     * @param string|int $group_id
+     * @param string $share_token
+     * @return string
      */
     public function join($group_id, $share_token)
     {
@@ -151,9 +146,8 @@ class GroupsService extends Service
     /**
      * rejoin: Rejoin a group. Only works if you previously removed yourself.
      *
-     * @param $group_id
-     * @return string $return
-     *
+     * @param string|int $group_id
+     * @return string
      */
     public function rejoin($group_id)
     {
@@ -174,8 +168,7 @@ class GroupsService extends Service
      * 		    group_id string — The ID of the group
      * 		    owner_id string — The ID of the new owner
      *
-     * @return string $return
-     *
+     * @return string
      */
     public function changeOwners($args = array())
     {

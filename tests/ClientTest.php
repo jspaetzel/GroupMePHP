@@ -57,7 +57,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $direct_message_service = new DirectMessagesService($this->client);
         $response = $direct_message_service->create([
             "source_guid" => "THISISAGUID123",
-            "recipient_id" => 12345678,
+            "recipient_id" => '12345678',
             "text" => 'Hello User'
         ]);
         self::assertNotNull($response);
