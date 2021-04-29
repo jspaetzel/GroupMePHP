@@ -1,22 +1,21 @@
 <?php
-namespace GroupMePHP;
+namespace GroupMePHP\Services;
 
-class users extends client {
-	
+class UsersService extends Service {
+
 	/**
 	 * me: Get details about the authenticated user.
-	 * 
+	 *
 	 * @return string $return
-	 * 
+	 *
 	 */
-	public function index(){
+	public function get(){
 		$params = array(
 			'url' => '/users/me',
 			'method' => 'GET',
 			'query' => array()
 		);
-		
+
 		return $this->request($params);
 	}
 }
-?>

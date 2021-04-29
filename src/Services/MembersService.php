@@ -1,14 +1,14 @@
 <?php
-namespace GroupMePHP;
+namespace GroupMePHP\Services;
 
 /**
  * Class members
  */
-class members extends client {
-	
+class MembersService extends Service {
+
 	/**
 	 * add: Add members to a group
-	 * 
+	 *
 	 * @param string $id
 	 * @param array $args
 	 * 		members array — nickname is required. You must use one of the following identifiers: user_id,
@@ -18,9 +18,9 @@ class members extends client {
 	 *      	phone_number (string)
 	 *      	email (string)
 	 *      	guid (string)
-	 * 
+	 *
 	 * @return string $return
-	 * 
+	 *
 	 */
 	public function add($id, $args){
 		$params = array(
@@ -29,7 +29,7 @@ class members extends client {
 			'query' => array(),
 			'payload' => $args
 		);
-		
+
 		return $this->request($params);
 	}
 
@@ -58,18 +58,18 @@ class members extends client {
 			'method' => 'GET',
 			'query' => array()
 			);
-		
+
 		return $this->request($params);
 	}
-	
+
 	/**
 	 * remove: Remove member from a group
-	 * 
+	 *
 	 * @param string $group_id
 	 * @param string $user_id
-	 * 
+	 *
 	 * @return string $return
-	 * 
+	 *
 	 */
 	public function remove($group_id, $user_id){
 		$params = array(

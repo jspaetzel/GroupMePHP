@@ -1,19 +1,19 @@
 <?php
-namespace GroupMePHP;
+namespace GroupMePHP\Services;
 
-class bots extends client {
-	
+class BotsService extends Service {
+
 	/**
 	 * create: Create a new bot
-	 * 
+	 *
 	 * @param array $args
 	 *      bot[name] required string
 	 *      bot[group_id] required string
 	 *      bot[avatar_url] string
 	 *      bot[callback_url string
-	 * 
+	 *
 	 * @return string $return
-	 * 
+	 *
 	 */
 	public function create($args){
 		$params = array(
@@ -22,29 +22,29 @@ class bots extends client {
 			'query' => array(),
 			'payload' => array('bot' => $args)
 		);
-		
+
 		return $this->request($params);
 	}
 
 	/**
 	 * post: Post a message from a bot
-	 * 
+	 *
 	 * @param array $args
-	 * 		bot_id required string 
+	 * 		bot_id required string
 	 * 		text required string
 	 * 		picture_url string — Image must be processed through image service.
-	 * 
+	 *
 	 * @return string $return
-	 * 
+	 *
 	 */
-	public function post($args){
+	public function post($args) {
 		$params = array(
 			'url' => '/bots/post',
 			'method' => 'POST',
 					'query' => array(),
 					'payload' => $args
 		);
-		
+
 		return $this->request($params);
 	}
 
@@ -59,7 +59,7 @@ class bots extends client {
 			'method' => 'GET',
 			'query' => array()
 			);
-		
+
 		return $this->request($params);
 	}
 
@@ -79,8 +79,7 @@ class bots extends client {
 					'query' => array($bot_id),
 					'payload' => array()
 		);
-		
+
 		return $this->request($params);
 	}
 }
-?>

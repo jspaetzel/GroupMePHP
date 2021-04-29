@@ -1,8 +1,8 @@
 <?php
-namespace GroupMePHP;
+namespace GroupMePHP\Services;
 
-class images extends image_client {
-	
+class ImagesService extends Service {
+
 	/**
 	 * pictures: Uploads a picture to the GroupMe Image servvice and returns the URL.
 	 *
@@ -17,7 +17,7 @@ class images extends image_client {
 			$file = tempnam(sys_get_temp_dir(), "gm_");
 			file_put_contents($file, file_get_contents($url));
 		}
-		
+
 		$file = "@" . $file;
 
 		$params = array(
@@ -28,12 +28,10 @@ class images extends image_client {
 		);
 
 		$response = $this->request($params);
-				
+
 		if ($file != $url){
 		    unlink(substr($file, 1));
 		}
-
-                return $response;
+		return $response;
 	}
 }
-?>

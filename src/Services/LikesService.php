@@ -1,16 +1,16 @@
 <?php
-namespace GroupMePHP;
+namespace GroupMePHP\Services;
 
-class likes extends client {
-	
+class LikesService extends Service {
+
 	/**
 	 * create: Like a message.
-	 * 
+	 *
 	 * @param string $conversation_id
 	 * @param string $message_id
-	 * 
+	 *
 	 * @return string $return
-	 * 
+	 *
 	 */
 	public function create($conversation_id, $message_id){
 		$params = array(
@@ -18,18 +18,18 @@ class likes extends client {
 			'method' => 'POST',
 			'query' => array(),
 		);
-		
+
 		return $this->request($params);
 	}
-	
+
 	/**
 	 * destroy: Unlike a message.
-	 * 
+	 *
 	 * @param string $conversation_id
 	 * @param string $message_id
-	 * 
+	 *
 	 * @return string $return
-	 * 
+	 *
 	 */
 	public function destroy($conversation_id, $message_id){
 		$params = array(
@@ -37,8 +37,7 @@ class likes extends client {
 			'method' => 'POST',
 			'query' => array(),
 		);
-		
+
 		return $this->request($params);
 	}
 }
-?>

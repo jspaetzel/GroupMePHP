@@ -1,17 +1,17 @@
 <?php
-namespace GroupMePHP;
+namespace GroupMePHP\Services;
 
-class groups extends client {
-	
+class GroupsService extends Service {
+
 	/**
 	 * index: List the authenticated user's active groups.
-	 * 
+	 *
 	 * @param array $args
 	 * 		page integer — Fetch a particular page of results. Defaults to 1
 	 * 		per_page integer — Define page size. Defaults to 10
-	 * 
+	 *
 	 * @return string $return
-	 * 
+	 *
 	 */
 	public function index($args = array()){
 		$params = array(
@@ -19,15 +19,15 @@ class groups extends client {
 			'method' => 'GET',
 			'query' => $args
 		);
-		
+
 		return $this->request($params);
 	}
-	
+
 	/**
 	 * former: List the authenticated user's former groups.
-	 * 
+	 *
 	 * @return string $return
-	 * 
+	 *
 	 */
 	public function former(){
 		$params = array(
@@ -35,17 +35,17 @@ class groups extends client {
 			'method' => 'GET',
 			'query' => array()
 		);
-		
+
 		return $this->request($params);
 	}
-	
+
 	/**
 	 * show: Load a specific group.
-	 * 
+	 *
 	 * @param string $id
-	 * 
+	 *
 	 * @return string $return
-	 * 
+	 *
 	 */
 	public function show($id){
 		$params = array(
@@ -53,21 +53,21 @@ class groups extends client {
 			'method' => 'GET',
 			'query' => array()
 		);
-		
+
 		return $this->request($params);
 	}
-	
+
 	/**
 	 * create: Create a new group
-	 * 
+	 *
 	 * @param array $args
 	 * 		name string
 	 * 		description string
 	 * 		image_url string
 	 * 		share boolean — If you pass a true value for share, we'll generate a share URL. Anybody with this URL can join the group.
-	 * 
+	 *
 	 * @return string $return
-	 * 
+	 *
 	 */
 	public function create($args){
 		$params = array(
@@ -76,7 +76,7 @@ class groups extends client {
 			'query' => array(),
 			'payload' => $args
 		);
-		
+
 		return $this->request($params);
 	}
 
@@ -100,17 +100,17 @@ class groups extends client {
 			'query' => array(),
 			'payload' => $args
 		);
-		
+
 		return $this->request($params);
 	}
-	
+
 	/**
 	 * destroy: Disband a group
-	 * 
+	 *
 	 * @param string $id
-	 * 
+	 *
 	 * @return string $return
-	 * 
+	 *
 	 */
 	public function destroy($id){
 		$params = array(
@@ -118,7 +118,7 @@ class groups extends client {
 			'method' => 'POST',
 			'query' => array(),
 		);
-		
+
 		return $this->request($params);
 	}
 
@@ -160,13 +160,13 @@ class groups extends client {
 
     /**
      * changeOwners: Change owners of requested groups. This action is only available to the current group owner.
-     * 
+     *
      * @param array $args
      * 		    group_id string — The ID of the group
      * 		    owner_id string — The ID of the new owner
-     * 
+     *
      * @return string $return
-     * 
+     *
      */
     public function changeOwners($args = array()){
 	$params = array(
@@ -179,4 +179,3 @@ class groups extends client {
         return $this->request($params);
     }
 }
-?>
