@@ -1,4 +1,7 @@
-## Unofficial PHP Client Library for the GroupMe v3 API
+## Unofficial PHP Client Library for the GroupMe v3 API 
+
+[![Build](https://github.com/jspaetzel/GroupMePHP/actions/workflows/php.yml/badge.svg)](https://github.com/jspaetzel/GroupMePHP/actions/workflows/php.yml)
+[![Packagist Version](https://img.shields.io/packagist/v/jspaetzel/groupme.svg)](https://packagist.org/packages/jspaetzel/groupme)
 
 Install with [Composer](https://getcomposer.org/)
 ~~~~~bash
