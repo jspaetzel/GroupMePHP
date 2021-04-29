@@ -37,3 +37,6 @@ then
 fi
 
 echo "${text_green}PHP CS Fixer finished execution successfully.${text_reset}"
+
+echo "Running PHPStan"
+php vendor/bin/phpstan analyse
