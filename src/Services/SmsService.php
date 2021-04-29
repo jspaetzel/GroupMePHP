@@ -1,4 +1,5 @@
 <?php
+
 namespace GroupMePHP\Services;
 
 class SmsService extends Service
@@ -13,15 +14,15 @@ class SmsService extends Service
      */
     public function enable($duration, $registration_id)
     {
-        $params = array(
+        $params = [
             'url' => '/users/sms_mode',
             'method' => 'POST',
-            'query' => array(),
-            'payload' => array(
+            'query' => [],
+            'payload' => [
                 'duration' => $duration,
-                'registration_id' => $registration_id
-                )
-        );
+                'registration_id' => $registration_id,
+                ],
+        ];
 
         return $this->request($params);
     }
@@ -33,12 +34,12 @@ class SmsService extends Service
      */
     public function disable()
     {
-        $params = array(
+        $params = [
             'url' => '/users/sms_mode/delete',
             'method' => 'POST',
-            'query' => array(),
-            'payload' => array()
-        );
+            'query' => [],
+            'payload' => [],
+        ];
 
         return $this->request($params);
     }

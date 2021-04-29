@@ -1,4 +1,5 @@
 <?php
+
 namespace GroupMePHP\Services;
 
 use GroupMePHP\Client;

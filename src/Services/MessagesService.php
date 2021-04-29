@@ -1,4 +1,5 @@
 <?php
+
 namespace GroupMePHP\Services;
 
 class MessagesService extends Service
@@ -7,19 +8,19 @@ class MessagesService extends Service
      * Retrieve messages for a group.
      *
      * @param string|int $id
-     * @param array $args
-     * 		before_id string — Returns 20 messages created before the given message ID
-     * 		since_id string — Returns 20 messages created after the given message ID
+     * @param array      $args
+     *                         before_id string — Returns 20 messages created before the given message ID
+     *                         since_id string — Returns 20 messages created after the given message ID
      *
      * @return string
      */
     public function index($id, $args)
     {
-        $params = array(
-            'url' => '/groups/' . $id . '/messages',
+        $params = [
+            'url' => '/groups/'.$id.'/messages',
             'method' => 'GET',
-            'query' => $args
-        );
+            'query' => $args,
+        ];
 
         return $this->request($params);
     }
@@ -28,31 +29,31 @@ class MessagesService extends Service
      * Create messages in a group.
      *
      * @param string|int $id
-     * @param array $args
-     * 		source_guid required string — This is used for client-side deduplication.
-     * 		text required string — This can be omitted if at least one attachment is present.
-     *      attachments optional array - include array of attachments to attach images, etc.
+     * @param array      $args
+     *                         source_guid required string — This is used for client-side deduplication.
+     *                         text required string — This can be omitted if at least one attachment is present.
+     *                         attachments optional array - include array of attachments to attach images, etc.
+     *
      * @return string
      */
     public function create($id, $args)
     {
         // Construct the payload, optionally with attachments
-        $payload = array(
-            "source_guid" => $args[0],
-            "text" => $args[1]
-        );
+        $payload = [
+            'source_guid' => $args[0],
+            'text' => $args[1],
+        ];
 
         if (!empty($args[2])) {
-            $payload = array_merge($payload, array("attachments" => array($args[2])));
+            $payload = array_merge($payload, ['attachments' => [$args[2]]]);
         }
 
-        $params = array(
-            'url' => '/groups/' . $id . '/messages',
+        $params = [
+            'url' => '/groups/'.$id.'/messages',
             'method' => 'POST',
-            'query' => array(),
-            'payload' =>
-                array( "message" => $payload )
-        );
+            'query' => [],
+            'payload' => ['message' => $payload],
+        ];
 
         return $this->request($params);
     }

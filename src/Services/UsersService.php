@@ -1,4 +1,5 @@
 <?php
+
 namespace GroupMePHP\Services;
 
 class UsersService extends Service
@@ -10,11 +11,11 @@ class UsersService extends Service
      */
     public function get()
     {
-        $params = array(
+        $params = [
             'url' => '/users/me',
             'method' => 'GET',
-            'query' => array()
-        );
+            'query' => [],
+        ];
 
         return $this->request($params);
     }

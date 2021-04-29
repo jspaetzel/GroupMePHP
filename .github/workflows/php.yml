@@ -16,7 +16,7 @@ jobs:
         php-versions: [ '7.2', '7.3', '7.4' ]
         dependency-stability: [ prefer-stable ]
 
-    name: P${{ matrix.php-versions }} - ${{ matrix.dependency-stability }} - ${{ matrix.operating-system}}
+    name: PHP ${{ matrix.php-versions }} - ${{ matrix.dependency-stability }} - ${{ matrix.operating-system}}
 
     steps:
     - uses: actions/checkout@v2

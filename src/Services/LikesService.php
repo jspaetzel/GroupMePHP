@@ -1,4 +1,5 @@
 <?php
+
 namespace GroupMePHP\Services;
 
 class LikesService extends Service
@@ -13,11 +14,11 @@ class LikesService extends Service
      */
     public function create($conversation_id, $message_id)
     {
-        $params = array(
-            'url' => '/messages/' . $conversation_id . '/' . $message_id . '/like',
+        $params = [
+            'url' => '/messages/'.$conversation_id.'/'.$message_id.'/like',
             'method' => 'POST',
-            'query' => array(),
-        );
+            'query' => [],
+        ];
 
         return $this->request($params);
     }
@@ -32,11 +33,11 @@ class LikesService extends Service
      */
     public function destroy($conversation_id, $message_id)
     {
-        $params = array(
-            'url' => '/messages/' . $conversation_id . '/' . $message_id . '/unlike',
+        $params = [
+            'url' => '/messages/'.$conversation_id.'/'.$message_id.'/unlike',
             'method' => 'POST',
-            'query' => array(),
-        );
+            'query' => [],
+        ];
 
         return $this->request($params);
     }

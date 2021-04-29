@@ -2,13 +2,24 @@
 
 namespace GroupMePHP;
 
+use const CURLOPT_CUSTOMREQUEST;
+use const CURLOPT_HTTPHEADER;
+use const CURLOPT_POSTFIELDS;
+use const CURLOPT_RETURNTRANSFER;
+use const CURLOPT_SSL_VERIFYPEER;
+use const CURLOPT_TIMEOUT;
+use const CURLOPT_URL;
+use const CURLOPT_USERAGENT;
+
 class Client
 {
-    private $token;
     protected $url = 'https://api.groupme.com/v3';
+    private $token;
 
     /**
-     * When creating a new Client object provide your token
+     * When creating a new Client object provide your token.
+     *
+     * @param mixed $token
      */
     public function __construct($token)
     {
@@ -16,26 +27,31 @@ class Client
     }
 
     /**
-     * Build query string from $args
+     * Build query string from $args.
+     *
+     * @param mixed $args
      */
-    public function buildQueryString($args = array())
+    public function buildQueryString($args = [])
     {
-        $args = array_merge($args, array("token" => $this->token));
+        $args = array_merge($args, ['token' => $this->token]);
 
-        $query = "";
+        $query = '';
         foreach ($args as $key => $val) {
-            if ($query !== '') {
-                $query .= "&";
+            if ('' !== $query) {
+                $query .= '&';
             } else {
-                $query .= "?";
+                $query .= '?';
             }
-            $query .= $key . '=' . $val;
+            $query .= $key.'='.$val;
         }
+
         return $query;
     }
 
     /**
-     * Overhead function that all requests utilize
+     * Overhead function that all requests utilize.
+     *
+     * @param mixed $args
      */
     public function request($args)
     {
@@ -47,16 +63,16 @@ class Client
         curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($c, CURLOPT_CUSTOMREQUEST, $args['method']);
 
-        $curlurl = $this->url . $args['url'] . $this->buildQueryString($args['query']);
+        $curlurl = $this->url.$args['url'].$this->buildQueryString($args['query']);
         curl_setopt($c, CURLOPT_URL, $curlurl);
 
-        if (($args['method'] === "POST") && isset($args['payload'])) {
-            $payload = "";
+        if (('POST' === $args['method']) && isset($args['payload'])) {
+            $payload = '';
             if (isset($args['payload']['file'])) {
                 $payload = $args['payload'];
             } else {
                 $payload = json_encode($args['payload']);
-                curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+                curl_setopt($c, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
             }
 
             curl_setopt($c, CURLOPT_POSTFIELDS, $payload);
@@ -64,6 +80,7 @@ class Client
         $info = curl_getinfo($c);
         $response = curl_exec($c);
         curl_close($c);
+
         return $response;
     }
 }
