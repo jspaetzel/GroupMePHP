@@ -6,6 +6,7 @@ use Dotenv\Dotenv;
 use GroupMePHP\Client;
 use GroupMePHP\Services\DirectMessagesService;
 use GroupMePHP\Services\GroupsService;
+use GroupMePHP\Services\MembersService;
 use GroupMePHP\Services\MessagesService;
 use GroupMePHP\Services\UsersService;
 use PHPUnit_Framework_TestCase;
@@ -76,5 +77,16 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $response = $group_service->show(1234567);
         $members = json_decode($response, true)['response']['members'];
         self::assertNotNull($members);
+    }
+
+    public function testAddGroupMembers()
+    {
+        $members_service = new MembersService($this->client);
+        $response = $members_service->add(1234567, [
+            'members' => [
+                ['nickname' => 'Test User', 'user_id' => '12345678']
+            ]
+        ]);
+        self::assertNotNull($response);
     }
 }
