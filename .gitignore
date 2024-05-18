@@ -1,7 +1,5 @@
 .idea/
 vendor/
-composer.phar
 tests/.env
-php-cs-fixer.phar
 .phpunit.result.cache
 .php-cs-fixer.cache
