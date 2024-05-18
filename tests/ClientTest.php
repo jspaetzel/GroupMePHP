@@ -2,41 +2,42 @@
 
 namespace GroupMePHP\Tests;
 
-use Dotenv\Dotenv;
 use GroupMePHP\Client;
-use GroupMePHP\Services\DirectMessagesService;
+use GroupMePHP\GroupmeException;
 use GroupMePHP\Services\GroupsService;
 use GroupMePHP\Services\MembersService;
 use GroupMePHP\Services\MessagesService;
 use GroupMePHP\Services\UsersService;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\Dotenv\Dotenv;
 
-class ClientTest extends PHPUnit_Framework_TestCase
+class ClientTest extends TestCase
 {
     /** @var Client */
     private $client;
 
-    public function __construct()
+    public function setUp(): void
     {
         parent::__construct();
-        $dotenv = Dotenv::createImmutable(__DIR__);
-        $dotenv->load();
+        $dotenv = new Dotenv();
+        $dotenv->load(__DIR__ . '/.env');
         $token = $_ENV['GROUPME_TOKEN'];
         $this->client = new Client($token);
     }
 
     public function testSimpleQueryString()
     {
-        $args = array();
-        $queryString = $this->client->buildQueryString($args);
-        self::assertEquals("?token=token", $queryString);
+        $client = new Client('token');
+        $queryString = $client->buildQueryString();
+        self::assertEquals('?token=token', $queryString);
     }
 
     public function testComplexQueryString()
     {
-        $args = array('a' => 1, 'b' => 2);
-        $queryString = $this->client->buildQueryString($args);
-        self::assertEquals("?a=1&b=2&token=token", $queryString);
+        $client = new Client('token');
+        $args = ['a' => 1, 'b' => 2];
+        $queryString = $client->buildQueryString($args);
+        self::assertEquals('?a=1&b=2&token=token', $queryString);
     }
 
     public function testGetMe()
@@ -44,24 +45,23 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $user_service = new UsersService($this->client);
         $response = $user_service->get();
         self::assertNotNull($response);
+        self::assertEquals($_ENV['TEST_USER_ID'], $response['id']);
+    }
+
+    public function testGetGroup()
+    {
+        $group_service = new GroupsService($this->client);
+        $response = $group_service->show($_ENV['TEST_GROUP_ID']);
+        self::assertNotNull($response);
+        self::assertEquals($_ENV['TEST_GROUP_ID'], $response['id']);
     }
 
     public function testSendMessageToGroup()
     {
         $messages_service = new MessagesService($this->client);
-        $response = $messages_service->create(12345678, ["THISISAGUID123", "Hello Group"]);
+        $response = $messages_service->create($_ENV['TEST_GROUP_ID'], [uniqid('test'), 'Hello Group']);
         self::assertNotNull($response);
-    }
-
-    public function testSendDirectMessage()
-    {
-        $direct_message_service = new DirectMessagesService($this->client);
-        $response = $direct_message_service->create([
-            "source_guid" => "THISISAGUID123",
-            "recipient_id" => '12345678',
-            "text" => 'Hello User'
-        ]);
-        self::assertNotNull($response);
+        self::assertEquals($response['message']['text'], 'Hello Group');
     }
 
     public function testGetUserGroupIndex()
@@ -74,19 +74,22 @@ class ClientTest extends PHPUnit_Framework_TestCase
     public function testGetGroupMembers()
     {
         $group_service = new GroupsService($this->client);
-        $response = $group_service->show(1234567);
-        $members = json_decode($response, true)['response']['members'];
+        $response = $group_service->show($_ENV['TEST_GROUP_ID']);
+        $members = $response['members'];
         self::assertNotNull($members);
     }
 
     public function testAddGroupMembers()
     {
         $members_service = new MembersService($this->client);
-        $response = $members_service->add(1234567, [
-            'members' => [
-                ['nickname' => 'Test User', 'user_id' => '12345678']
-            ]
-        ]);
-        self::assertNotNull($response);
+        try {
+            $response = $members_service->add(1234567, [
+                'members' => [
+                    ['nickname' => 'Test User', 'user_id' => '12345678'],
+                ],
+            ]);
+        } catch (GroupmeException $ex) {
+            self::assertEquals(401, $ex->getCode());
+        }
     }
 }

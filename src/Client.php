@@ -42,7 +42,7 @@ class Client
             } else {
                 $query .= '?';
             }
-            $query .= $key.'='.$val;
+            $query .= $key . '=' . $val;
         }
 
         return $query;
@@ -63,7 +63,7 @@ class Client
         curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($c, CURLOPT_CUSTOMREQUEST, $args['method']);
 
-        $curlurl = $this->url.$args['url'].$this->buildQueryString($args['query']);
+        $curlurl = $this->url . $args['url'] . $this->buildQueryString($args['query']);
         curl_setopt($c, CURLOPT_URL, $curlurl);
 
         if (('POST' === $args['method']) && isset($args['payload'])) {

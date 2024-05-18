@@ -8,8 +8,6 @@ class ImagesService extends Service
      * Uploads a picture to the GroupMe Image servvice and returns the URL.
      *
      * @param string $url to image
-     *
-     * @return string from GroupMe API
      */
     public function pictures($url)
     {
@@ -20,7 +18,7 @@ class ImagesService extends Service
             file_put_contents($file, file_get_contents($url));
         }
 
-        $file = '@'.$file;
+        $file = '@' . $file;
 
         $params = [
             'url' => '/pictures',

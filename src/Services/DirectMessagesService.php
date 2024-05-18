@@ -11,8 +11,6 @@ class DirectMessagesService extends Service
      *                    other_user_id required string — The other participant in the conversation.
      *                    before_id string — Returns 20 messages created before the given message ID
      *                    since_id string — Returns 20 messages created after the given message ID
-     *
-     * @return string
      */
     public function index($args)
     {
@@ -32,8 +30,6 @@ class DirectMessagesService extends Service
      *                    source_guid required string — This is used for client-side deduplication.
      *                    recipient_id required string — The GroupMe user ID of the recipient of this message.
      *                    text required string — This can be omitted if at least one attachment is present.
-     *
-     * @return string
      */
     public function create($args)
     {

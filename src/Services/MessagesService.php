@@ -7,17 +7,15 @@ class MessagesService extends Service
     /**
      * Retrieve messages for a group.
      *
-     * @param string|int $id
+     * @param int|string $id
      * @param array      $args
      *                         before_id string — Returns 20 messages created before the given message ID
      *                         since_id string — Returns 20 messages created after the given message ID
-     *
-     * @return string
      */
     public function index($id, $args)
     {
         $params = [
-            'url' => '/groups/'.$id.'/messages',
+            'url' => '/groups/' . $id . '/messages',
             'method' => 'GET',
             'query' => $args,
         ];
@@ -28,13 +26,11 @@ class MessagesService extends Service
     /**
      * Create messages in a group.
      *
-     * @param string|int $id
+     * @param int|string $id   of group
      * @param array      $args
      *                         source_guid required string — This is used for client-side deduplication.
      *                         text required string — This can be omitted if at least one attachment is present.
      *                         attachments optional array - include array of attachments to attach images, etc.
-     *
-     * @return string
      */
     public function create($id, $args)
     {
@@ -49,7 +45,7 @@ class MessagesService extends Service
         }
 
         $params = [
-            'url' => '/groups/'.$id.'/messages',
+            'url' => '/groups/' . $id . '/messages',
             'method' => 'POST',
             'query' => [],
             'payload' => ['message' => $payload],

@@ -9,13 +9,11 @@ class LeaderboardService extends Service
      *
      * @param string $group_id
      * @param string $period   <day|week|month|>
-     *
-     * @return string
      */
     public function index($group_id, $period)
     {
         $params = [
-            'url' => "/groups/$group_id/likes?period=$period",
+            'url' => "/groups/{$group_id}/likes?period={$period}",
             'method' => 'GET',
             'query' => [],
         ];
@@ -27,13 +25,11 @@ class LeaderboardService extends Service
      * A list of messages you have liked. Messages are returned in reverse chrono-order. Note that the payload includes a liked_at timestamp in ISO-8601 format.
      *
      * @param string $group_id
-     *
-     * @return string
      */
     public function myLikes($group_id)
     {
         $params = [
-            'url' => "/groups/$group_id/likes/mine",
+            'url' => "/groups/{$group_id}/likes/mine",
             'method' => 'GET',
             'query' => [],
         ];
@@ -45,13 +41,11 @@ class LeaderboardService extends Service
      * A list of messages you have liked. Messages are returned in reverse chrono-order. Note that the payload includes a liked_at timestamp in ISO-8601 format.
      *
      * @param string $group_id
-     *
-     * @return string
      */
     public function myHits($group_id)
     {
         $params = [
-            'url' => "/groups/$group_id/likes/for_me",
+            'url' => "/groups/{$group_id}/likes/for_me",
             'method' => 'GET',
             'query' => [],
         ];

@@ -10,8 +10,6 @@ class GroupsService extends Service
      * @param array $args
      *                    page integer — Fetch a particular page of results. Defaults to 1
      *                    per_page integer — Define page size. Defaults to 10
-     *
-     * @return string
      */
     public function index($args = [])
     {
@@ -26,8 +24,6 @@ class GroupsService extends Service
 
     /**
      * List the authenticated user's former groups.
-     *
-     * @return string
      */
     public function former()
     {
@@ -43,14 +39,12 @@ class GroupsService extends Service
     /**
      * Load a specific group.
      *
-     * @param string|int $id
-     *
-     * @return string
+     * @param int|string $id
      */
     public function show($id)
     {
         $params = [
-            'url' => '/groups/'.$id,
+            'url' => '/groups/' . $id,
             'method' => 'GET',
             'query' => [],
         ];
@@ -66,8 +60,6 @@ class GroupsService extends Service
      *                    description string
      *                    image_url string
      *                    share boolean — If you pass a true value for share, we'll generate a share URL. Anybody with this URL can join the group.
-     *
-     * @return string
      */
     public function create($args)
     {
@@ -84,19 +76,17 @@ class GroupsService extends Service
     /**
      * Update a group after creation.
      *
-     * @param string|int $id
+     * @param int|string $id
      * @param array      $args
      *                         name string
      *                         description string
      *                         image_url string
      *                         share boolean — If you pass a true value for share, we'll generate a share URL. Anybody with this URL can join the group.
-     *
-     * @return string
      */
     public function update($id, $args)
     {
         $params = [
-            'url' => '/groups/'.$id.'/update',
+            'url' => '/groups/' . $id . '/update',
             'method' => 'POST',
             'query' => [],
             'payload' => $args,
@@ -108,14 +98,12 @@ class GroupsService extends Service
     /**
      * Disband a group.
      *
-     * @param string|int $id
-     *
-     * @return string
+     * @param int|string $id
      */
     public function destroy($id)
     {
         $params = [
-            'url' => '/groups/'.$id.'/destroy',
+            'url' => '/groups/' . $id . '/destroy',
             'method' => 'POST',
             'query' => [],
         ];
@@ -126,15 +114,13 @@ class GroupsService extends Service
     /**
      * Join a shared group.
      *
-     * @param string|int $group_id
+     * @param int|string $group_id
      * @param string     $share_token
-     *
-     * @return string
      */
     public function join($group_id, $share_token)
     {
         $params = [
-            'url' => "/groups/$group_id/join/$share_token",
+            'url' => "/groups/{$group_id}/join/{$share_token}",
             'method' => 'POST',
             'query' => [],
         ];
@@ -145,9 +131,7 @@ class GroupsService extends Service
     /**
      * Rejoin a group. Only works if you previously removed yourself.
      *
-     * @param string|int $group_id
-     *
-     * @return string
+     * @param int|string $group_id
      */
     public function rejoin($group_id)
     {
@@ -167,8 +151,6 @@ class GroupsService extends Service
      * @param array $args
      *                    group_id string — The ID of the group
      *                    owner_id string — The ID of the new owner
-     *
-     * @return string
      */
     public function changeOwners($args = [])
     {

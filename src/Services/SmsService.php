@@ -9,8 +9,6 @@ class SmsService extends Service
      *
      * @param string $duration
      * @param string $registration_id
-     *
-     * @return string
      */
     public function enable($duration, $registration_id)
     {
@@ -21,7 +19,7 @@ class SmsService extends Service
             'payload' => [
                 'duration' => $duration,
                 'registration_id' => $registration_id,
-                ],
+            ],
         ];
 
         return $this->request($params);
@@ -29,8 +27,6 @@ class SmsService extends Service
 
     /**
      * Disable SMS mode.
-     *
-     * @return string
      */
     public function disable()
     {
